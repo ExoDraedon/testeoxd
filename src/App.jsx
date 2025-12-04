@@ -1,0 +1,1 @@
+export default function App(){return <div style={{padding:20,fontSize:40}}>Juego tabla periódica listo</div>}
