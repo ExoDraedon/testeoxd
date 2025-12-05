@@ -1,66 +1,73 @@
+/* Fondo blanco completo y texto negro */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
+  background: #ffffff;
+  color: #000000;
   text-align: center;
-}
-
-/* Pantalla de carga */
-.loader-screen {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #444;
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Menú */
-.menu {
   padding: 40px;
 }
 
+/* Loader minimalista */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-circle {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #000;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Ocultar */
 .hidden {
   display: none;
 }
 
+/* Fade-in minimalista */
+.fade {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botones minimalistas */
 button {
+  background: black;
+  color: white;
+  border: none;
   padding: 12px 20px;
   margin: 10px;
-  background: crimson;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-size: 18px;
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 16px;
+  transition: 0.2s;
 }
 
 button:hover {
-  background: #ff4d4d;
+  opacity: 0.6;
 }
 
-/* Juego */
-.game {
-  padding: 40px;
-}
-
+/* Input */
 input {
   padding: 10px;
   font-size: 16px;
+  margin: 10px;
+  border: 1px solid black;
+  outline: none;
   width: 200px;
 }
