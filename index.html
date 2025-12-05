@@ -1,5 +1,53 @@
 <!DOCTYPE html>
-<html>
-  <head><meta charset="UTF-8"><title>Tabla</title></head>
-  <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juego tabla periódica</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Pantalla de carga -->
+  <div id="loader" class="loader-screen">
+    <div class="spinner"></div>
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Menú principal -->
+  <div id="mainMenu" class="menu hidden">
+    <h1>Juego de la Tabla Periódica</h1>
+
+    <button onclick="startGame()">Jugar</button>
+
+    <h3>Cambiar modo de juego:</h3>
+    <select id="modeSelector">
+      <option value="simbolo">Adivinar símbolo</option>
+      <option value="nombre">Adivinar nombre</option>
+      <option value="numero">Adivinar número atómico</option>
+    </select>
+
+    <h3>Personalizar colores:</h3>
+    <label>Color fondo</label>
+    <input type="color" id="colorFondo" value="#111111">
+
+    <label>Color texto</label>
+    <input type="color" id="colorTexto" value="#ffffff">
+
+    <button onclick="applyColors()">Aplicar colores</button>
+  </div>
+
+  <!-- Juego -->
+  <div id="game" class="game hidden">
+    <h2 id="question"></h2>
+
+    <input id="answerInput" type="text" placeholder="Escribe tu respuesta">
+    <button onclick="checkAnswer()">Enviar</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
