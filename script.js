@@ -1,63 +1,61 @@
-// Datos mínimos (puedo agregar los 118 elementos si quieres)
+// Elementos básicos para prueba
 const elementos = [
   { nombre: "Hidrógeno", simbolo: "H", numero: 1 },
   { nombre: "Helio", simbolo: "He", numero: 2 },
   { nombre: "Litio", simbolo: "Li", numero: 3 },
-  { nombre: "Berilio", simbolo: "Be", numero: 4 },
-  { nombre: "Boro", simbolo: "B", numero: 5 },
   { nombre: "Carbono", simbolo: "C", numero: 6 },
-  // puedo agregar 118 si quieres
+  { nombre: "Oxígeno", simbolo: "O", numero: 8 }
 ];
 
 let modo = "simbolo";
-let elementoActual = null;
+let seleccionado = null;
 
-// Oculta el loader después de 1 segundo
+// Loader desaparece después de 900ms
 setTimeout(() => {
   document.getElementById("loader").classList.add("hidden");
-  document.getElementById("mainMenu").classList.remove("hidden");
-}, 1000);
+  document.getElementById("menu").classList.remove("hidden");
+}, 900);
 
 function startGame() {
   modo = document.getElementById("modeSelector").value;
 
-  document.getElementById("mainMenu").classList.add("hidden");
+  document.getElementById("menu").classList.add("hidden");
   document.getElementById("game").classList.remove("hidden");
 
   nuevaPregunta();
 }
 
 function nuevaPregunta() {
-  elementoActual = elementos[Math.floor(Math.random() * elementos.length)];
+  seleccionado = elementos[Math.floor(Math.random() * elementos.length)];
 
   let pregunta = "";
 
-  if (modo === "simbolo") pregunta = `¿Cuál es el símbolo de ${elementoActual.nombre}?`;
-  if (modo === "nombre") pregunta = `¿Cuál es el nombre del elemento con símbolo ${elementoActual.simbolo}?`;
-  if (modo === "numero") pregunta = `¿Cuál es el número atómico de ${elementoActual.nombre}?`;
+  if (modo === "simbolo") 
+    pregunta = `Símbolo de: ${seleccionado.nombre}`;
 
-  document.getElementById("question").innerText = pregunta;
-  document.getElementById("answerInput").value = "";
-  document.getElementById("result").innerText = "";
+  if (modo === "nombre") 
+    pregunta = `Nombre del elemento: ${seleccionado.simbolo}`;
+
+  if (modo === "numero") 
+    pregunta = `Número atómico de: ${seleccionado.nombre}`;
+
+  document.getElementById("question").textContent = pregunta;
+  document.getElementById("answer").value = "";
+  document.getElementById("result").textContent = "";
 }
 
 function checkAnswer() {
-  const respuesta = document.getId("answerInput").value.trim().toLowerCase();
-  const correcto =
-    modo === "simbolo" ? elementoActual.simbolo.toLowerCase() :
-    modo === "nombre"  ? elementoActual.nombre.toLowerCase() :
-    modo === "numero"  ? String(elementoActual.numero) :
-    "";
+  const ans = document.getElementById("answer").value.trim().toLowerCase();
 
-  if (respuesta === correcto) {
-    document.getElementById("result").innerText = "Correcto!";
-    setTimeout(nuevaPregunta, 800);
+  const correct =
+    modo === "simbolo" ? seleccionado.simbolo.toLowerCase() :
+    modo === "nombre"  ? seleccionado.nombre.toLowerCase() :
+    modo === "numero"  ? String(seleccionado.numero) : "";
+
+  if (ans === correct) {
+    document.getElementById("result").textContent = "Correcto";
+    setTimeout(nuevaPregunta, 600);
   } else {
-    document.getElementById("result").innerText = `Incorrecto. Era: ${correcto}`;
+    document.getElementById("result").textContent = `Incorrecto — era: ${correct}`;
   }
-}
-
-function applyColors() {
-  document.body.style.background = document.getElementById("colorFondo").value;
-  document.body.style.color = document.getElementById("colorTexto").value;
 }
