@@ -1,0 +1,16 @@
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #fafafa;
+  margin: 0;
+  padding: 40px;
+}
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.hidden { display: none; }
+#question { font-size: 22px; margin: 20px 0; }

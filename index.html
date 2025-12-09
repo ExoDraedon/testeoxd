@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Tabla Periódica</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="menu">
+    <h1>Tabla Periódica — Juegos</h1>
+    <button onclick="startGame('clasico')">Modo Clásico</button>
+    <button onclick="startGame('tiempo')">Modo Contra Reloj</button>
+    <button onclick="startGame('survival')">Modo Survival</button>
+  </div>
+
+  <div id="game" class="hidden">
+    <h2 id="modeTitle"></h2>
+    <div id="question"></div>
+    <input id="answer" placeholder="Símbolo..." autocomplete="off">
+    <button onclick="checkAnswer()">Enviar</button>
+    <div id="result"></div>
+    <button onclick="backToMenu()">Volver al menú</button>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
